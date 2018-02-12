@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\webextractor.domain\webextractor.domain.csproj" />
-    <ProjectReference Include="..\webextractor.service\webextractor.service.csproj" />
+    <ProjectReference Include="..\webextractor.business\webextractor.business.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

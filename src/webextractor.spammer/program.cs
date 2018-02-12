@@ -3,7 +3,9 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using WebExtractor.Domain.Models;
-using WebExtractor.Service.Extensions;
+using WebExtractor.Domain.Services;
+using WebExtractor.Business.Services;
+// using WebExtractor.Service.Extensions;
 
 namespace WebExtractor.Spammer
 {
@@ -39,6 +41,8 @@ namespace WebExtractor.Spammer
 
         static void Main(string[] args)
         {
+
+            var service = new LinkService();
             var site = new Site(name: "EmuParadise", domain: URL_BASE);
             var emulators = new List<Emulator>();
             var roms = new List<Rom>();
@@ -49,11 +53,17 @@ namespace WebExtractor.Spammer
             var romsLink = site.AddLink(id: "07f5a759-de52-40d5-a5ff-ce3663596532", url: URL_ROMS,
                 expressions: new[] { REGEX_ROM_ANCHORS, REGEX_ROM_HREF_TITLE });
 
-            emulatorsLink.Download();
-            emulatorsLink.Response().ForEach(f => emulators.Add((Emulator)Activator.CreateInstance(typeof(Emulator), f)));
+            // emulatorsLink.Download();
+            // emulatorsLink.Response().ForEach(f => emulators.Add((Emulator)Activator.CreateInstance(typeof(Emulator), f)));
 
-            romsLink.Download();
-            romsLink.Response().ForEach(f => roms.Add((Rom)Activator.CreateInstance(typeof(Rom), f)));
+            service.Download(emulatorsLink);
+            service.Extract(emulatorsLink).ForEach(f => emulators.Add((Emulator)Activator.CreateInstance(typeof(Emulator), f)));
+
+            // romsLink.Download();
+            // romsLink.Response().ForEach(f => roms.Add((Rom)Activator.CreateInstance(typeof(Rom), f)));
+
+            service.Download(romsLink);
+            service.Extract(romsLink).ForEach(f => roms.Add((Rom)Activator.CreateInstance(typeof(Rom), f)));
 
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;

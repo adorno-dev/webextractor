@@ -9,6 +9,8 @@
 /home/developer/.workspace/webextractor/src/webextractor.spammer/obj/Debug/netcoreapp2.0/WebExtractor.Spammer.dll
 /home/developer/.workspace/webextractor/src/webextractor.spammer/obj/Debug/netcoreapp2.0/WebExtractor.Spammer.pdb
 /home/developer/.workspace/webextractor/src/webextractor.spammer/bin/Debug/netcoreapp2.0/WebExtractor.Domain.dll
-/home/developer/.workspace/webextractor/src/webextractor.spammer/bin/Debug/netcoreapp2.0/WebExtractor.Service.dll
 /home/developer/.workspace/webextractor/src/webextractor.spammer/bin/Debug/netcoreapp2.0/WebExtractor.Domain.pdb
-/home/developer/.workspace/webextractor/src/webextractor.spammer/bin/Debug/netcoreapp2.0/WebExtractor.Service.pdb
+/home/developer/.workspace/webextractor/src/webextractor.spammer/bin/Debug/netcoreapp2.0/WebExtractor.Business.dll
+/home/developer/.workspace/webextractor/src/webextractor.spammer/bin/Debug/netcoreapp2.0/WebExtractor.Data.dll
+/home/developer/.workspace/webextractor/src/webextractor.spammer/bin/Debug/netcoreapp2.0/WebExtractor.Business.pdb
+/home/developer/.workspace/webextractor/src/webextractor.spammer/bin/Debug/netcoreapp2.0/WebExtractor.Data.pdb

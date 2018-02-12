@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/webextractor.spammer/webextractor.spammer.csproj"
+                "${workspaceFolder}/webextractor.api/webextractor.api.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

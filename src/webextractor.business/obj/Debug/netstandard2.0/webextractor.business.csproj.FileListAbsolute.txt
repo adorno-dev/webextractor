@@ -1,0 +1,12 @@
+/home/developer/.workspace/webextractor/src/webextractor.business/bin/Debug/netstandard2.0/WebExtractor.Business.deps.json
+/home/developer/.workspace/webextractor/src/webextractor.business/bin/Debug/netstandard2.0/WebExtractor.Business.dll
+/home/developer/.workspace/webextractor/src/webextractor.business/bin/Debug/netstandard2.0/WebExtractor.Business.pdb
+/home/developer/.workspace/webextractor/src/webextractor.business/bin/Debug/netstandard2.0/WebExtractor.Data.dll
+/home/developer/.workspace/webextractor/src/webextractor.business/bin/Debug/netstandard2.0/WebExtractor.Domain.dll
+/home/developer/.workspace/webextractor/src/webextractor.business/bin/Debug/netstandard2.0/WebExtractor.Domain.pdb
+/home/developer/.workspace/webextractor/src/webextractor.business/bin/Debug/netstandard2.0/WebExtractor.Data.pdb
+/home/developer/.workspace/webextractor/src/webextractor.business/obj/Debug/netstandard2.0/webextractor.business.csproj.CoreCompileInputs.cache
+/home/developer/.workspace/webextractor/src/webextractor.business/obj/Debug/netstandard2.0/webextractor.business.AssemblyInfoInputs.cache
+/home/developer/.workspace/webextractor/src/webextractor.business/obj/Debug/netstandard2.0/webextractor.business.AssemblyInfo.cs
+/home/developer/.workspace/webextractor/src/webextractor.business/obj/Debug/netstandard2.0/WebExtractor.Business.dll
+/home/developer/.workspace/webextractor/src/webextractor.business/obj/Debug/netstandard2.0/WebExtractor.Business.pdb

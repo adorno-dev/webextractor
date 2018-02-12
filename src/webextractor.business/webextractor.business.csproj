@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\webextractor.domain\webextractor.domain.csproj" />
+    <ProjectReference Include="..\webextractor.data\webextractor.data.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+      <AssemblyName>WebExtractor.Business</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>

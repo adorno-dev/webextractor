@@ -5,8 +5,8 @@ namespace WebExtractor.Domain.Models
     public class Expression
     {
         public Guid Id { get; set; }
+
         public string Value { get; set; }
-        public virtual Link Link { get; set; }
 
         protected Expression() => 
             this.Id = Guid.NewGuid();

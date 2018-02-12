@@ -11,6 +11,9 @@ namespace WebExtractor.Domain.Models
         public string Content { get; set; }
         public virtual IList<Expression> Expressions { get; set; }
 
+        protected Link()
+            => (Id, Expressions) = (Guid.NewGuid(), new List<Expression>());
+
         public Link(string url, params string[] expressions)
             => (Id, Url, Expressions) = (Guid.NewGuid(), url, expressions.Select(s => new Expression(value: s)).ToArray());
 
