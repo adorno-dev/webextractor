@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\webextractor.domain\webextractor.domain.csproj" />
+    <ProjectReference Include="..\webextractor.service\webextractor.service.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+      <AssemblyName>WebExtractor.Spammer</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
