@@ -6,6 +6,9 @@ namespace WebExtractor.Domain.Models
     {
         public Guid Id { get; set; }
 
+        public Guid LinkId { get; set; }
+        public virtual Link Link { get; set; }
+
         public string Value { get; set; }
 
         protected Expression() => 

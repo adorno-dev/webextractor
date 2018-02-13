@@ -1,8 +1,0 @@
-/home/developer/.workspace/webextractor/src/webextractor.domain/bin/Debug/netstandard2.0/WebExtractor.Domain.deps.json
-/home/developer/.workspace/webextractor/src/webextractor.domain/bin/Debug/netstandard2.0/WebExtractor.Domain.dll
-/home/developer/.workspace/webextractor/src/webextractor.domain/bin/Debug/netstandard2.0/WebExtractor.Domain.pdb
-/home/developer/.workspace/webextractor/src/webextractor.domain/obj/Debug/netstandard2.0/webextractor.domain.csproj.CoreCompileInputs.cache
-/home/developer/.workspace/webextractor/src/webextractor.domain/obj/Debug/netstandard2.0/webextractor.domain.AssemblyInfoInputs.cache
-/home/developer/.workspace/webextractor/src/webextractor.domain/obj/Debug/netstandard2.0/webextractor.domain.AssemblyInfo.cs
-/home/developer/.workspace/webextractor/src/webextractor.domain/obj/Debug/netstandard2.0/WebExtractor.Domain.dll
-/home/developer/.workspace/webextractor/src/webextractor.domain/obj/Debug/netstandard2.0/WebExtractor.Domain.pdb

@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using WebExtractor.Api.Extensions;
 using WebExtractor.Business.Services;
 using WebExtractor.Data.EntityFramework;
@@ -23,7 +26,12 @@ namespace WebExtractor.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AsLowerCaseLocation()
-                    .AddMvc();
+                    .AddMvc()
+                    .AddJsonOptions(options =>
+                    {
+                        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                        options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                    });
 
             services.AddDbContext<WebExtractorContext>(options => options.UseInMemoryDatabase(databaseName: "WebExtractor"))
                     .AddScoped<WebExtractorContext>()

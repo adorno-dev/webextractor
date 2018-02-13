@@ -9,6 +9,10 @@ namespace WebExtractor.Domain.Models
         public Guid Id { get; set; }
         public string Url { get; set; }
         public string Content { get; set; }
+
+        public Guid SiteId { get; set; }
+        public virtual Site Site { get; set; }
+
         public virtual IList<Expression> Expressions { get; set; }
 
         protected Link()

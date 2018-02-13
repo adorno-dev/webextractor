@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -15,23 +16,23 @@ namespace WebExtractor.Api.Controllers
         public LinksController(ILinkService service) => _service = service;
 
         [HttpGet]
-        // public Task<IList<Link>> Get() => Task.FromResult(_service.GetLinks());
-        public Task<IList<Link>> Get()
-        {
-            return Task.FromResult(_service.GetLinks());
-        }
+        public Task<IList<Link>> Get() => Task.FromResult(_service.GetLinks());
 
         [HttpGet("{id}")]
         public Task<Link> Get(Guid id) => Task.FromResult(_service.Get(id));
 
+        [HttpGet("{id}/values")]
+        public Task<List<string[]>> GetValues(Guid id)
+        {
+            var instance = _service.Get(id);
+            _service.Download(instance);
+            return Task.FromResult(_service.Extract(instance));
+        }
+
         [HttpPost]
-        // public Task Post([FromBody] Link instance) => Task.Run(() => _service.Create(instance));
         public Task Post([FromBody] Link instance)
         {
             _service.Create(instance);
-            _service.Download(instance);
-            _service.Extract(instance);
-
             return Task.CompletedTask;
         }
 

@@ -13,9 +13,9 @@ namespace WebExtractor.Data.EntityFramework.Repositories
 
         public ExpressionRepository(WebExtractorContext context) => _context = context;
 
-        public IList<Expression> All() => _context.Expressions.ToList();
+        public IList<Expression> All() => _context.Expressions.Include(x => x.Link).ToList();
 
-        public Expression Get(Guid id) => _context.Expressions.Find(id);
+        public Expression Get(Guid id) => _context.Expressions.Include(x => x.Link).FirstOrDefault(x => x.Id.Equals(id));
 
         public void Create(Expression instance)
         {

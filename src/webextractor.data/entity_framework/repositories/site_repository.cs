@@ -13,9 +13,9 @@ namespace WebExtractor.Data.EntityFramework.Repositories
 
         public SiteRepository(WebExtractorContext context) => _context = context;
 
-        public IList<Site> All() => _context.Sites.Include(i => i.Links).ToList();
+        public IList<Site> All() => _context.Sites.Include(x => x.Links).ToList();
 
-        public Site Get(Guid id) => _context.Sites.Include(i => i.Links).Where(w => w.Id.Equals(id)).FirstOrDefault();
+        public Site Get(Guid id) => _context.Sites.Include(x => x.Links).FirstOrDefault(x => x.Id.Equals(id));
 
         public void Create(Site instance)
         {

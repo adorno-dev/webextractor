@@ -65,22 +65,40 @@ namespace WebExtractor.Spammer
             service.Download(romsLink);
             service.Extract(romsLink).ForEach(f => roms.Add((Rom)Activator.CreateInstance(typeof(Rom), f)));
 
+            // Console.Clear();
+            // Console.ForegroundColor = ConsoleColor.Yellow;
+            // Console.WriteLine("---------------");
+            // Console.WriteLine("-  Emulators  -");
+            // Console.WriteLine("---------------");
+            
+            // foreach (var emulator in emulators)
+            // {
+            //     Console.ForegroundColor = ConsoleColor.Green;
+            //     Console.Write("=> ");
+            //     Console.ForegroundColor = ConsoleColor.Cyan;
+            //     Console.Write(emulator.Name);
+            //     Console.Write(Environment.NewLine);
+            // }
+            
+            // Console.ResetColor();
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("---------------");
-            Console.WriteLine("-  Emulators  -");
-            Console.WriteLine("---------------");
+            Console.WriteLine("----------");
+            Console.WriteLine("-  Roms  -");
+            Console.WriteLine("----------");
             
-            foreach (var emulator in emulators)
+            foreach (var rom in roms)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("=> ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write(emulator.Name);
+                Console.Write(rom.Title);
                 Console.Write(Environment.NewLine);
             }
             
             Console.ResetColor();
+
         }
     }
 }

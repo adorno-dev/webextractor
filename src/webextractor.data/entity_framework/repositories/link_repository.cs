@@ -13,9 +13,9 @@ namespace WebExtractor.Data.EntityFramework.Repositories
 
         public LinkRepository(WebExtractorContext context) => _context = context;
 
-        public IList<Link> All() => _context.Links.Include(i => i.Expressions).ToList();
+        public IList<Link> All() => _context.Links.Include(x => x.Expressions).ToList();
 
-        public Link Get(Guid id) => _context.Links.Include(i => i.Expressions).Where(w => w.Id.Equals(id)).FirstOrDefault();
+        public Link Get(Guid id) => _context.Links.Include(x => x.Expressions).FirstOrDefault(x => x.Id.Equals(id));
 
         public void Create(Link instance)
         {
