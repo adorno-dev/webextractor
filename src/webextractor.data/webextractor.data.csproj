@@ -12,7 +12,7 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
-      <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.1" /> -->
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
   </ItemGroup>
 
@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\webextractor.domain\webextractor.domain.csproj" />
+    <ProjectReference Include="..\webextractor.common\webextractor.common.csproj" />
   </ItemGroup>
 
 </Project>

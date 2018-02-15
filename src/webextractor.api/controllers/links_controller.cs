@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebExtractor.Domain.Models;
 using WebExtractor.Domain.Services;
+using WebExtractor.Common.Extensions;
 
 namespace WebExtractor.Api.Controllers
 {
@@ -22,11 +23,29 @@ namespace WebExtractor.Api.Controllers
         public Task<Link> Get(Guid id) => Task.FromResult(_service.Get(id));
 
         [HttpGet("{id}/values")]
-        public Task<List<string[]>> GetValues(Guid id)
+        [HttpGet("{id}/values/page/{pageIndex}")]
+        public Task<JsonResult> GetValues(Guid id, int? pageIndex, int? pageSize = 30)
         {
-            var instance = _service.Get(id);
-            _service.Download(instance);
-            return Task.FromResult(_service.Extract(instance));
+
+            IList<string[]> values = null;
+            Link instance = _service.Get(id);
+
+            instance.Content = _service.Download(instance);
+            values = _service.Extract(instance);
+            
+            if (pageIndex.HasValue)
+            {
+                var paginated = values.Paginate(page: pageIndex, pageSize: pageSize);
+
+                var answer = new {
+                    pagination = new { Page = pageIndex, TotalRecords = paginated.totalRecords, TotalPages = paginated.totalPages },
+                    data = paginated.collection.ToList()
+                };
+                
+                return Task.FromResult(Json(answer));
+            }
+
+            return Task.FromResult(Json(values));
         }
 
         [HttpPost]

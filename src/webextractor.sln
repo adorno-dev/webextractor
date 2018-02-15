@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webextractor.api", "webextr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webextractor.spammer", "webextractor.spammer\webextractor.spammer.csproj", "{F5268424-6AE3-4F11-8298-6DEC11609924}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webextractor.common", "webextractor.common\webextractor.common.csproj", "{F5621196-1C9C-4223-B42C-AC8AC6202260}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,5 +88,17 @@ Global
 		{F5268424-6AE3-4F11-8298-6DEC11609924}.Release|x64.Build.0 = Release|x64
 		{F5268424-6AE3-4F11-8298-6DEC11609924}.Release|x86.ActiveCfg = Release|x86
 		{F5268424-6AE3-4F11-8298-6DEC11609924}.Release|x86.Build.0 = Release|x86
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Debug|x64.ActiveCfg = Debug|x64
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Debug|x64.Build.0 = Debug|x64
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Debug|x86.ActiveCfg = Debug|x86
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Debug|x86.Build.0 = Debug|x86
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Release|x64.ActiveCfg = Release|x64
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Release|x64.Build.0 = Release|x64
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Release|x86.ActiveCfg = Release|x86
+		{F5621196-1C9C-4223-B42C-AC8AC6202260}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal

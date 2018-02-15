@@ -33,7 +33,8 @@ namespace WebExtractor.Api
                         options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                     });
 
-            services.AddDbContext<WebExtractorContext>(options => options.UseInMemoryDatabase(databaseName: "WebExtractor"))
+            // services.AddDbContext<WebExtractorContext>(options => options.UseInMemoryDatabase(databaseName: "WebExtractor"))
+            services.AddDbContext<WebExtractorContext>(options => options.UseSqlServer(connectionString: "Data Source=<Instance>;Initial Catalog=WebExtractor;User ID=<UserID>;Password=<Password>"))
                     .AddScoped<WebExtractorContext>()
                     .AddScoped<ISiteRepository, SiteRepository>()
                     .AddScoped<ILinkRepository, LinkRepository>()
@@ -46,6 +47,13 @@ namespace WebExtractor.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors(cors =>
+            {
+                cors.AllowAnyHeader();
+                cors.AllowAnyMethod();
+                cors.AllowAnyOrigin();
+            });
+
             app.UseMvc(m => m.MapRoute(name: "api", template: "{controller}/{action}/{id?}"));
         }
     }

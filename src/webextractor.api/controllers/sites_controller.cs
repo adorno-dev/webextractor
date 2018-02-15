@@ -18,12 +18,6 @@ namespace WebExtractor.Api.Controllers
 
         [HttpGet]
         public Task<IList<Site>> Get() => Task.FromResult(_service.GetSites());
-        // public JsonResult Get() 
-        // {
-        //     var response = _service.GetSites().Select(
-        //         s => new { Id = s.Id, Name = s.Name, Domain = s.Domain, Links = s.Links.Select(s1 => new { Id = s1.Id, Url = s1.Url }) });
-        //     return Json(response);
-        // }
 
         [HttpGet("{id}")]
         public Task<Site> Get(Guid id) => Task.FromResult(_service.Get(id));

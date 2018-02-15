@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\webextractor.domain\webextractor.domain.csproj" />
     <ProjectReference Include="..\webextractor.data\webextractor.data.csproj" />
+    <ProjectReference Include="..\webextractor.common\webextractor.common.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
