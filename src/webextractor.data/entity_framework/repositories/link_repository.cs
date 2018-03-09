@@ -13,9 +13,28 @@ namespace WebExtractor.Data.EntityFramework.Repositories
         private readonly WebExtractorContext _context;
         public LinkRepository(WebExtractorContext context) => _context = context;
 
-        public IList<Link> All() => _context.Links.Include(x => x.Expressions).Paginate().collection.ToList();
+        public IList<Link> AllFromSite(Guid id)
+        {
+            var all = _context.Links.Include(x => x.Site).Where(w => w.SiteId.Equals(id)).Paginate().collection.ToList();
+            return all.AsEnumerable().Reverse().ToList();
+        }
 
-        public Link Get(Guid id) => _context.Links.Include(x => x.Expressions).FirstOrDefault(x => x.Id.Equals(id));
+        public IList<Link> All() // => _context.Links.Include(x => x.Expressions).Paginate().collection.ToList();
+        {
+            var all = _context.Links.Include(x => x.Expressions).Paginate().collection.ToList();
+            all.ForEach(f => f.Expressions = f.Expressions.OrderBy(o => o.Order).ToList());
+            return all;
+        }
+
+        public Link Get(Guid id) // => _context.Links.Include(x => x.Expressions).FirstOrDefault(x => x.Id.Equals(id));
+        {
+            var one = _context.Links.Include(x => x.Expressions).FirstOrDefault(x => x.Id.Equals(id));
+            
+            if (one != null && one.Expressions != null)
+                one.Expressions = one.Expressions.OrderBy(o => o.Order).ToList();
+                
+            return one;
+        }
 
         public void Create(Link instance)
         {
@@ -26,6 +45,12 @@ namespace WebExtractor.Data.EntityFramework.Repositories
         public void Update(Link instance)
         {
             _context.Entry<Link>(instance).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+        
+        public void Delete(Guid id)
+        {
+            _context.Links.Remove(_context.Links.Find(id));
             _context.SaveChanges();
         }
 

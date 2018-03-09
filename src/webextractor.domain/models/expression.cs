@@ -9,9 +9,11 @@ namespace WebExtractor.Domain.Models
         public Guid LinkId { get; set; }
         public virtual Link Link { get; set; }
 
+        public int Order { get; set; }
+
         public string Value { get; set; }
 
-        protected Expression() => 
+        public Expression() => 
             this.Id = Guid.NewGuid();
 
         public Expression(string value) =>

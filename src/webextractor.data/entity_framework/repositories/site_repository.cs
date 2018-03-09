@@ -13,9 +13,11 @@ namespace WebExtractor.Data.EntityFramework.Repositories
 
         public SiteRepository(WebExtractorContext context) => _context = context;
 
-        public IList<Site> All() => _context.Sites.Include(x => x.Links).ToList();
+        // public IList<Site> All() => _context.Sites.Include(x => x.Links).ToList();
+        public IList<Site> All() => _context.Sites.Include("Links").Include("Links.Expressions").ToList();
 
-        public Site Get(Guid id) => _context.Sites.Include(x => x.Links).FirstOrDefault(x => x.Id.Equals(id));
+        // public Site Get(Guid id) => _context.Sites.Include(x => x.Links).FirstOrDefault(x => x.Id.Equals(id));
+        public Site Get(Guid id) => _context.Sites.FirstOrDefault(x => x.Id.Equals(id));
 
         public void Create(Site instance)
         {
@@ -26,6 +28,12 @@ namespace WebExtractor.Data.EntityFramework.Repositories
         public void Update(Site instance)
         {
             _context.Entry<Site>(instance).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public void Delete(Guid id)
+        {
+            _context.Sites.Remove(_context.Sites.Find(id));
             _context.SaveChanges();
         }
 

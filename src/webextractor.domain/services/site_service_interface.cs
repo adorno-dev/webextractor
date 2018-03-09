@@ -12,6 +12,7 @@ namespace WebExtractor.Domain.Services
 
         void Create(Site site);
         void Update(Site site);
+        void Delete(Guid siteId);
         void Delete(Site site);
     }
 }

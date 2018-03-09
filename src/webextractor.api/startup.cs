@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
+// using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -25,6 +27,9 @@ namespace WebExtractor.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // services.AddDataProtection()
+            //         .DisableAutomaticKeyGeneration();
+
             services.AsLowerCaseLocation()
                     .AddMvc()
                     .AddJsonOptions(options =>
@@ -34,7 +39,7 @@ namespace WebExtractor.Api
                     });
 
             // services.AddDbContext<WebExtractorContext>(options => options.UseInMemoryDatabase(databaseName: "WebExtractor"))
-            services.AddDbContext<WebExtractorContext>(options => options.UseSqlServer(connectionString: "Data Source=<Instance>;Initial Catalog=WebExtractor;User ID=<UserID>;Password=<Password>"))
+            services.AddDbContext<WebExtractorContext>(options => options.UseSqlite("Data Source=extractor.db"))
                     .AddScoped<WebExtractorContext>()
                     .AddScoped<ISiteRepository, SiteRepository>()
                     .AddScoped<ILinkRepository, LinkRepository>()

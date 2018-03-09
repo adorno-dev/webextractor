@@ -11,6 +11,7 @@ namespace WebExtractor.Domain.Repositories
 
         void Create(Site instance);
         void Update(Site instance);
+        void Delete(Guid id);
         void Delete(Site instance);
     }
 }

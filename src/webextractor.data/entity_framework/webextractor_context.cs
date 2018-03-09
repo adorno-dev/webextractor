@@ -9,7 +9,10 @@ namespace WebExtractor.Data.EntityFramework
         public WebExtractorContext() {}
 
         public WebExtractorContext(DbContextOptions options)
-            : base(options) {}
+            : base(options) {
+                this.Database.GetMigrations();
+                this.Database.Migrate();
+            }
         
         public DbSet<Site> Sites { get; set; }
         public DbSet<Link> Links { get; set; }
@@ -39,6 +42,7 @@ namespace WebExtractor.Data.EntityFramework
             expressionMap.Property(p => p.Id).HasColumnName("id");
             expressionMap.Property(p => p.Value).HasColumnName("value");
             expressionMap.Property(p => p.LinkId).HasColumnName("link_id");
+            expressionMap.Property(p => p.Order).HasColumnName("order");
             
             siteMap.HasMany(r => r.Links);
             linkMap.HasMany(r => r.Expressions);

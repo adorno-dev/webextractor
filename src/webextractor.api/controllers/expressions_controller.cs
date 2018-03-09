@@ -26,7 +26,7 @@ namespace WebExtractor.Api.Controllers
         [HttpPut]
         public Task Put([FromBody] Expression instance) => Task.Run(() => _service.Update(instance));
 
-        [HttpDelete]
-        public Task Delete([FromBody] Expression instance) => Task.Run(() => _service.Delete(instance));
+        [HttpDelete("{id}")]
+        public Task Delete(Guid id) => Task.Run(() => _service.Delete(id));
     }
 }

@@ -24,15 +24,17 @@ namespace WebExtractor.Business.Services
 
         public IList<Expression> GetExpressions() => _repository.All();
 
-        public Expression Get(Guid expressionId) => _repository.Get(id: expressionId);
-
         public Expression Get(string expressionId) => _repository.Get(id: Guid.Parse(expressionId));
 
-        public void Create(Expression link) => _repository.Create(instance: link);
+        public Expression Get(Guid expressionId) => _repository.Get(id: expressionId);
 
-        public void Update(Expression link) => _repository.Update(instance: link);
+        public void Create(Expression expression) => _repository.Create(instance: expression);
 
-        public void Delete(Expression link) => _repository.Delete(instance: link);
+        public void Update(Expression expression) => _repository.Update(instance: expression);
+
+        public void Delete(Guid expressionId) => _repository.Delete(id: expressionId);
+
+        public void Delete(Expression expression) => _repository.Delete(instance: expression);
 
         #endregion
 

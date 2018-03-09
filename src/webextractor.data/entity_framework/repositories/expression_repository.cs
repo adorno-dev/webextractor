@@ -13,12 +13,14 @@ namespace WebExtractor.Data.EntityFramework.Repositories
 
         public ExpressionRepository(WebExtractorContext context) => _context = context;
 
-        public IList<Expression> All() => _context.Expressions.Include(x => x.Link).ToList();
+        public IList<Expression> All() => _context.Expressions.Include(x => x.Link).OrderBy(o => o.Order).Select(s => s).ToList();
 
-        public Expression Get(Guid id) => _context.Expressions.Include(x => x.Link).FirstOrDefault(x => x.Id.Equals(id));
+        public Expression Get(Guid id) => _context.Expressions.Include(x => x.Link).OrderBy(o => o.Order).Select(s => s).FirstOrDefault(x => x.Id.Equals(id));
 
         public void Create(Expression instance)
         {
+            var identity = _context.Expressions.Where(w => w.LinkId.Equals(instance.LinkId)).Select(s => s.Order).ToList();
+            instance.Order = identity.Count > 0 ? identity.Max() + 1 : 1;
             _context.Expressions.Add(instance);
             _context.SaveChanges();
         }
@@ -26,6 +28,12 @@ namespace WebExtractor.Data.EntityFramework.Repositories
         public void Update(Expression instance)
         {
             _context.Entry<Expression>(instance).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public void Delete(Guid id)
+        {
+            _context.Expressions.Remove(_context.Expressions.Find(id));
             _context.SaveChanges();
         }
 

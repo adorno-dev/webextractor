@@ -28,7 +28,7 @@ namespace WebExtractor.Api.Controllers
         [HttpPut]
         public Task Put([FromBody] Site instance) => Task.Run(()=> _service.Update(instance));
 
-        [HttpDelete]
-        public Task Delete([FromBody] Site instance) => Task.Run(()=> _service.Delete(instance));
+        [HttpDelete("{id}")]
+        public Task Delete(Guid id) => Task.Run(()=> _service.Delete(id));
     }
 }

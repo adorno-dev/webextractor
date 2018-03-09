@@ -11,6 +11,7 @@ namespace WebExtractor.Domain.Repositories
 
         void Create(Expression instance);
         void Update(Expression instance);
+        void Delete(Guid id);
         void Delete(Expression instance);
     }
 }

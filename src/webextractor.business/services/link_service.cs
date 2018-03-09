@@ -20,7 +20,7 @@ namespace WebExtractor.Business.Services
 
         #region +Ctors
 
-        public LinkService() {}
+        public LinkService() { }
 
         public LinkService(ILinkRepository repository) => _repository = repository;
 
@@ -30,13 +30,17 @@ namespace WebExtractor.Business.Services
 
         public IList<Link> GetLinks() => _repository.All();
 
-        public Link Get(Guid linkId) => _repository.Get(id: linkId);
+        public IList<Link> GetLinksFromSite(Guid siteId) => _repository.AllFromSite(siteId);
 
         public Link Get(string linkId) => _repository.Get(id: Guid.Parse(linkId));
+
+        public Link Get(Guid linkId) => _repository.Get(id: linkId);
 
         public void Create(Link link) => _repository.Create(instance: link);
 
         public void Update(Link link) => _repository.Update(instance: link);
+
+        public void Delete(Guid linkId) => _repository.Delete(id: linkId);
 
         public void Delete(Link link) => _repository.Delete(instance: link);
 
@@ -66,7 +70,7 @@ namespace WebExtractor.Business.Services
         {
             var values = new List<string[]>();
 
-            foreach (var expression in link.Expressions)
+            foreach (var expression in link.Expressions.OrderBy(o => o.Order))
             {
                 if (values.Count == 0)
                     values = Regex.Matches(link.Content, expression.Value)
@@ -80,6 +84,29 @@ namespace WebExtractor.Business.Services
                                             .Select(select => select.Value)
                                             .ToArray();
             }
+
+            return values;
+        }
+
+        public List<string[]> Extract(Link link, string expression)
+        {
+            var values = new List<string[]>();
+
+            if (link.Expressions.Count > 0)
+            {
+                values = this.Extract(link);
+
+                for (int index = 0; index < values.Count; index++)
+                    values[index] = Regex.Matches(values[index].FirstOrDefault(), expression)
+                                        .Cast<Match>()
+                                        .Select(select => select.Value)
+                                        .ToArray();
+            }
+            else
+                return Regex.Matches(link.Content, expression)
+                                            .Cast<Match>()
+                                            .Select(select => new[] { select.Value })
+                                            .ToList();
 
             return values;
         }
